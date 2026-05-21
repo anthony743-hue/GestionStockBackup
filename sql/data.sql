@@ -1,0 +1,1 @@
+INSERT INTO TypeMvt (designation) VALUES ('Entree'),('Sortie');
