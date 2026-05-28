@@ -43,12 +43,10 @@ public class MvtStockPanel extends JPanel {
 
         JButton enregistrer = new JButton("Enregistrer");
         enregistrer.addActionListener(e -> {
-            public void actionPerformed(ActionEvent e){
-                try {
-                    enregistrer();
-                } catch (Exception e) {
-                    // TODO: handle exception
-                }
+            try {
+                enregistrer();
+            } catch (Exception ex) {
+                
             }
         });
         gbc.gridx++;
@@ -105,7 +103,7 @@ public class MvtStockPanel extends JPanel {
             for(j=0; j < fields.length; i++){
                 fields[i].setAccessible(true);
                 nomChamp = fields[i].getName();
-                if(!nomChamp.equalsIgnoreCase("id") ){
+                if(nomChamp.equalsIgnoreCase("id") ){
                     continue;
                 }
                 
