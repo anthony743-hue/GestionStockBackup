@@ -15,6 +15,7 @@ import affichage.components.MaTable;
 import affichage.components.MonPanel;
 import models.mouvement.MvtStock;
 import models.mouvement.MvtStockDetail;
+import service.GenericService;
 import utilities.MethodUtils;
 
 public class MvtStockPanel extends JPanel {
@@ -44,9 +45,10 @@ public class MvtStockPanel extends JPanel {
         JButton enregistrer = new JButton("Enregistrer");
         enregistrer.addActionListener(e -> {
             try {
+                mp1.getValue();
                 enregistrer();
             } catch (Exception ex) {
-                
+                System.out.println(ex.getMessage());
             }
         });
         gbc.gridx++;
@@ -101,8 +103,8 @@ public class MvtStockPanel extends JPanel {
         for(i=0; i < lsM2.size(); i++){
             temp = lsM2.get(i);
             for(j=0; j < fields.length; i++){
-                fields[i].setAccessible(true);
-                nomChamp = fields[i].getName();
+                fields[j].setAccessible(true);
+                nomChamp = fields[j].getName();
                 if(nomChamp.equalsIgnoreCase("id") ){
                     continue;
                 }
@@ -115,6 +117,12 @@ public class MvtStockPanel extends JPanel {
                 method.invoke(temp,val);
             }
         }
+        GenericService service = new GenericService();
+        service.save(m);
+        for(MvtStockDetail m : lsM2){
+            m.setIdMvtStockMere(m.getIdMvtStockMere());
+        }
+        service.saveBatch(lsM2);
     }
 
     private void addMvtStockDetailForm() {

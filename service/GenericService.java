@@ -2,7 +2,10 @@ package service;
 
 import dao.GenericDAO;
 import utilities.UtilDB;
+
+import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import utilities.Mapping;
 
@@ -31,6 +34,14 @@ public class GenericService {
 
     public void save(Object o) throws Exception {
         dao.save(o);
+    }
+
+    public void saveBatch(Collection<?> dt) throws Exception{
+        dao.insertBatch(dt);
+    }
+
+    public void save(Object o, Collection<?> dt) throws Exception{
+        dao.save(o, dt);
     }
 
     public void update(Object o) throws Exception {

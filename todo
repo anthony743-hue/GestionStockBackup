@@ -1,14 +1,15 @@
 Aujourd'hui
 
 [ ] Faire fonctionner l'insertion multiple de MvtStockDetail : on utilise un ArrayList
-[ ] Ameliorer l'affichage du sidebar , 
-    - la rendre horizontal
-    - utiliser un dropdown pour regrouper par contexte, entite
 
 Plus tard 
 
 [ ] Reetudier et modifier la conception de la BDD
-
+[ ] Ameliorer l'affichage
+    Sidebar 
+        - la rendre horizontal
+        - utiliser un dropdown pour regrouper par contexte, entite
+    
 
 Choix pour la multiple insertion :
     - Tableau 
