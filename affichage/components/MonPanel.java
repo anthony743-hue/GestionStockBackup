@@ -1,9 +1,7 @@
 package affichage.components;
 
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.lang.reflect.Method;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JPanel;

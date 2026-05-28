@@ -7,6 +7,7 @@ import utilities.MethodUtils;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class MaTable extends JTable {
 
     public MaTable(Collection<?> data) throws Exception {
         setData(data);
+        initColumnName();
         init();
     }
 
@@ -44,7 +46,6 @@ public class MaTable extends JTable {
     }
 
     private void init() throws Exception {
-        initColumnName();
         Object[][] donnees = new Object[items.size()][columnNames.length];
         Object obj = null, val = null;
         for (int row = 0; row < items.size(); row++) {
@@ -54,12 +55,7 @@ public class MaTable extends JTable {
                 donnees[row][col] = (val != null) ? val.toString() : "";
             }
         }
-        DefaultTableModel model = new DefaultTableModel(donnees, columnNames) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
+        DefaultTableModel model = new DefaultTableModel(donnees, columnNames);
 
         setModel(model);
     }
@@ -88,7 +84,6 @@ public class MaTable extends JTable {
             return;
         }
 
-
         for (int row = 0; row < items.size(); row++) {
             Object obj = items.get(row);
             for (int col = 0; col < columnNames.length; col++) {
@@ -103,6 +98,13 @@ public class MaTable extends JTable {
             throw new Exception("le data doit etre  initialisee");
         }
         this.items = new ArrayList<>(data);
+    }
+    
+    public void addRow() {
+        DefaultTableModel model = (DefaultTableModel) getModel();
+        Object[] dt = new Object[columnNames.length];
+        Arrays.fill(dt, "");
+        model.addRow(dt);
     }
 
     public List<?> getItems() {
